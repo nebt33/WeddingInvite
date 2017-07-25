@@ -38,5 +38,19 @@ public class WeddingInviteController {
 		model.put("message", MESSAGE);
 		return "reception";
 	}
+	
+	@GetMapping(value="/the_cast")
+	public String the_cast(Map<String, Object> model) {
+		model.put("title", TITLE);
+		model.put("message", MESSAGE);
+		return "the_cast";
+	}
+	
+	@GetMapping(value="/registry")
+	public String registry(Map<String, Object> model) {
+		model.put("title", TITLE);
+		model.put("message", MESSAGE);
+		return "registry";
+	}
 
 }

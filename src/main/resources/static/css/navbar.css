@@ -1,18 +1,2 @@
-@media(min-width:767px) {
-    .navbar {
-        padding: 20px 0;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        transition: background .5s ease-in-out,padding .5s ease-in-out;
-        text-align: center;
-    }
-
-    .top-nav-collapse {
-        padding: 0;
-    }
-    
-    .justified {
-	    position: relative;
-	    left: 50%;
-	}
-}
+@charset "ISO-8859-1";
+body { padding-top: 40px; }
