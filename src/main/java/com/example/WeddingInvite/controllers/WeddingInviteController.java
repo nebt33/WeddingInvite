@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-//@RequestMapping(value= "/views")
 public class WeddingInviteController {
 	
 	// inject via application.properties
@@ -20,7 +19,7 @@ public class WeddingInviteController {
 	@Value("${app.welcome.title}")
 	private String TITLE;
 	
-	@GetMapping(value="/login")
+	@GetMapping(value={"/login", "/"})
 	public String login(Map<String, Object> model) {
 		model.put("title", TITLE);
 		model.put("message", MESSAGE);
