@@ -1,8 +1,7 @@
-{{>layout/header}}
+<%@ include file="header.jsp" %>
 <body>
 	{{>layout/navbar}}	
 	<!-- Header -->
-<!-- 	<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="ceremony"> -->
 	<header class="w3-display-container w3-content w3-wide" style="max-width:1600px" id="ceremony">
 	  <img class="w3-image" src="/img/jewel_box_front_view.jpg" alt="The Jewel Box" width="1600" height="800">
 	  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
@@ -61,9 +60,9 @@
 	<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
 	<script src="webjars/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="js/scrolling-nav.js"></script>
-	<script src="js/navbar.js"></script>
-	<script src="js/roadmaps.js"></script>  
+	<script src="/js/scrolling-nav.js"></script>
+	<script src="/js/navbar.js"></script>
+	<script src="/js/roadmaps.js"></script>  
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZSnaNHbJclwIfqOX9ibL0oAH7mc-Bjo8&callback=ceremony_map"></script> 
 </body>
 {{>layout/footer}}

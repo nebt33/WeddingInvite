@@ -15,7 +15,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/ceremony.html">Ceremony</a></li>
 				<li><a href="/reception.html">Reception</a></li>
-				<li><a href="/rsvp.html">RSVP</a></li>
+				<li><a href="/song.html">Request A Song</a></li>
 				<li><a href="/registry.html">Registry</a></li>
 				<li><a href="/the_cast.html">The Cast</a></li>
 			</ul>
