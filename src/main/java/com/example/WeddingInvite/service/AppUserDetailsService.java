@@ -12,17 +12,17 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.WeddingInvite.model.AppUser;
-import com.example.WeddingInvite.repo.AppUserRepo;
+import com.example.WeddingInvite.repo.AppUserRepository;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
 	
 	@Autowired
-	private AppUserRepo appUserRepo;
+	private AppUserRepository appUserRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String user_name) throws UsernameNotFoundException {
-		AppUser appUser = Optional.ofNullable(appUserRepo.findOne(user_name)).orElseThrow(() -> new UsernameNotFoundException(user_name));
+		AppUser appUser = Optional.ofNullable(appUserRepository.findOne(user_name)).orElseThrow(() -> new UsernameNotFoundException(user_name));
 
 		return new User(appUser.getUserName(), appUser.getPassword(), Collections.singletonList(new SimpleGrantedAuthority("USER")));
 	}
