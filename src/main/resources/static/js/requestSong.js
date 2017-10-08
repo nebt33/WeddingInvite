@@ -1,4 +1,4 @@
-$(document).ready(function() {    
+$(document).ready(function() { 
     $(".search").keyup(function () {
         var searchTerm = $(".search").val();
         var listItem = $('.results tbody').children('tr');

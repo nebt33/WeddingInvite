@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 .container {
-	padding: 80px;
+	padding: 3%;
 }
 
 .results tr[visible='false'],
@@ -12,9 +12,8 @@
   display:table-row;
 }
 
-.counter{
-  padding:8px; 
-  color:#ccc;
+.table > tbody > tr > td {
+     vertical-align: middle;
 }
 
 .modal {

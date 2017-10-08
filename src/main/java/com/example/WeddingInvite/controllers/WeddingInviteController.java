@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.WeddingInvite.model.Song;
 import com.example.WeddingInvite.repo.SongRepository;
@@ -69,11 +70,6 @@ public class WeddingInviteController {
 		model.put("message", MESSAGE);
 		return "registry";
 	}
-// 
-//    @RequestMapping("/partials/{page}")
-//    String partialHandler(@PathVariable("page") final String page) {
-//        return page;
-//    }
 	
 	@PostMapping(value = "/addSongPost")
 	public String addSongPost(@ModelAttribute Song song, Map<String, Object> model,Pageable pageable) {
@@ -108,6 +104,16 @@ public class WeddingInviteController {
 			}
 		}
 		model.put("songTable", songTable);
+		return "requestSong";
+	}
+	
+	@PostMapping(value = "/likeSong")
+	public String likeSong(@RequestParam("title")  String title,
+			               @RequestParam("artist") String artist, 
+			               Map<String, Object> model) {
+		model.put("title", TITLE);
+		model.put("message", MESSAGE);
+		//songRepoistory.save(song);
 		return "requestSong";
 	}
 	
