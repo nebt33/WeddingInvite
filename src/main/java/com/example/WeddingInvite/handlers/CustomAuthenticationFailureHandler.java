@@ -1,6 +1,7 @@
 package com.example.WeddingInvite.handlers;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
 import com.example.WeddingInvite.model.AppUser;
@@ -40,9 +39,10 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 		AppUser appUser = null;
 		
 		try {
-			appUser = appUserRepository.findOne(userName);
+;			appUser = Optional.ofNullable(appUserRepository.findOne(userName)).orElseThrow(() -> new UsernameNotFoundException(userName));
 		} catch (UsernameNotFoundException u) {
 			System.out.println("User : " + userName + " not found!");
+			response.sendRedirect("login?error=unknownUser");
 		}
 
 		if (appUser != null) {

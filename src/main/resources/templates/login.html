@@ -20,6 +20,9 @@
 			{{#locked}}
 			    <label style="color:red">Your Account is Locked!</label>
 			{{/locked}}
+			{{#unknownUser}}
+			    <label style="color:red">Your username was not found!</label>
+			{{/unknownUser}}
             <form class="form-signin" action="/login" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" name="user_name" id="inputUserName" class="form-control" placeholder="User Name" required autofocus>
