@@ -14,6 +14,12 @@
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
+            {{#badCred}}
+			    <label style="color:red">Invalid username and password!</label>
+			{{/badCred}}
+			{{#locked}}
+			    <label style="color:red">Your Account is Locked!</label>
+			{{/locked}}
             <form class="form-signin" action="/login" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" name="user_name" id="inputUserName" class="form-control" placeholder="User Name" required autofocus>

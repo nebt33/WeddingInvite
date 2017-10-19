@@ -11,19 +11,28 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.example.WeddingInvite.handlers.CustomAuthenticationFailureHandler;
+import com.example.WeddingInvite.handlers.CustomAuthenticationSuccessHandler;
+
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+    
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
                 .authorizeRequests()
-                	.antMatchers("/webjars/**", "/css/**", "/js/**", "/img/**").permitAll()
+                	.antMatchers("/webjars/**", "/css/**", "/js/**", "/img/**", "/login**").permitAll()
                 	.anyRequest().authenticated()
 					.and()
                 .formLogin()
@@ -32,9 +41,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 					.passwordParameter("password")
 					.defaultSuccessUrl("/ceremony")
 					.permitAll()
+					.failureHandler(customAuthenticationFailureHandler)
+					.successHandler(customAuthenticationSuccessHandler)
 					.and()
 		        .logout().logoutSuccessUrl("/login?logout");
-//		        .and().exceptionHandling().accessDeniedPage("/accessDenied");
     }
 
     @Autowired

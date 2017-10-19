@@ -37,9 +37,16 @@ public class WeddingInviteController {
 	private String TITLE;
 	
 	@GetMapping(value={"/login", "/"})
-	public String login(Map<String, Object> model) {
+	public String login(Map<String, Object> model, @RequestParam(value = "error", required = false) String error) {
 		model.put("title", TITLE);
 		model.put("message", MESSAGE);
+		
+		if (error != null && error.equalsIgnoreCase("badCred")) {
+	        model.put("badCred", "Invalid username and/or password!");
+	    } else if (error != null && error.equalsIgnoreCase("locked")) {
+	    	model.put("locked", "Your Account is Locked!");
+	    }
+		
 		return "login";
 	}
 	
