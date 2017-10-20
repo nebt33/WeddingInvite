@@ -42,7 +42,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 ;			appUser = Optional.ofNullable(appUserRepository.findOne(userName)).orElseThrow(() -> new UsernameNotFoundException(userName));
 		} catch (UsernameNotFoundException u) {
 			System.out.println("User : " + userName + " not found!");
-			response.sendRedirect("login?error=unknownUser");
+			response.sendRedirect("login?error=badCred");
 		}
 
 		if (appUser != null) {

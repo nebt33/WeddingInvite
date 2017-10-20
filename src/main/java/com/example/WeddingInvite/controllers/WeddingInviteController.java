@@ -45,8 +45,6 @@ public class WeddingInviteController {
 	        model.put("badCred", "Invalid username and/or password!");
 	    } else if (error != null && error.equalsIgnoreCase("locked")) {
 	    	model.put("locked", "Your Account is Locked!");
-	    } else if (error != null && error.equalsIgnoreCase("unknownUser")) {
-	    	model.put("unknownUser", "Your username was not found!");
 	    }
 		
 		return "login";
