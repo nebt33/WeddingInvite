@@ -6,7 +6,7 @@
 .profile-card {
 	background-color: #222222;
 	margin-bottom: 20px;
-	height: 65%;
+	max-height: 80%;
 }
 
 .profile-pic {
