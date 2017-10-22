@@ -90,10 +90,18 @@ public class WeddingInviteController {
 	}
 	
 	@PostMapping(value = "/addSongPost")
-	public String addSongPost(@ModelAttribute Song song, Map<String, Object> model,Pageable pageable) {
+	public String addSongPost(@ModelAttribute Song song, Map<String, Object> model) {
 		model.put("title", TITLE);
 		model.put("message", MESSAGE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		song.setSubmittedBy(auth.getName());
+	      
 		songRepoistory.save(song);
+		
+		Pageable pageable = new PageRequest(0,1000,
+				Direction.ASC, "title", "artist");
+		
 		Page<Song> songTable = songRepoistory.findAll(pageable);
 		model.put("songTable", songTable);
 		return "requestSong";

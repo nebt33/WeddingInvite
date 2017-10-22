@@ -20,8 +20,6 @@
 					<tr>
 						<th class="text-center" data-sortable="true">Title</th>
 						<th class="text-center" data-sortable="true">Artist</th>
-<!-- 						<th class="text-center" data-sortable="true">Popularity</th> -->
-<!-- 						<th class="text-center" data-sortable="true">Vote</th> -->
 					</tr>
 				</thead>
 				<tbody>
@@ -30,14 +28,6 @@
 						<form class="form-like" action="/likeSong" method="post">
 							<td class="text-center vertical-align" name="title" id="title">{{title}}</td>
 							<td class="text-center vertical-align" name="artist" id="artist">{{artist}}</td>
-<!-- 							<td class="text-center vertical-align">{{#numOfHearts}} <span -->
-<!-- 								class="glyphicon glyphicon-heart" /></span> {{/numOfHearts}} -->
-<!-- 							</td> -->
-<!-- 							<td class="text-center pagination-centered"> -->
-<!-- 								<button class="btn btn-info btn-md"> -->
-<!-- 						          <span class="glyphicon glyphicon-thumbs-up"></span> Like -->
-<!-- 						        </button> -->
-<!-- 						    </td> -->
 						 </form>
 					</tr>
 					{{/songTable}}
@@ -59,9 +49,9 @@
 									<div class="tab-content">
 										<form class="form-signin" action="/addSongPost" method="post">
 											<input type="text" name="title" id="inputTitle"
-												class="form-control" placeholder="Title" required><br>
+												class="form-control" placeholder="Title" maxlength="300" required><br>
 											<input type="text" name="artist" id="inputArtist"
-												class="form-control" placeholder="Artist" required><br>
+												class="form-control" placeholder="Artist" maxlength="300" required><br>
 											<button class="btn btn-lg btn-primary btn-block btn-signin"
 												type="submit">Submit Song</button>
 										</form>

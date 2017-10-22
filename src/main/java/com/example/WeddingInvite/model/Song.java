@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import lombok.Data;
 
-import java.util.List;
+import java.util.Date;
 
 @Entity
 @Table(name="SONG")
@@ -22,10 +22,11 @@ public class Song {
 	@Column
 	private String artist;
 	
-	@Column
-	private int popularity;
-
-	@Transient
-	private List<String> numOfHearts;
+	@Column(name="submitted_by")
+	private String submittedBy;
+	
+	@Column(name="submitted_by_date")
+	private Date submittedByDate;
+	
 
 }
