@@ -1,12 +1,6 @@
 {{>layout/header}}
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Tangerine">
 
-<style>
-.w3-tangerine {
-	font-family: 'Tangerine', serif;
-}
-</style>
+<link href="/css/registry.css" rel="stylesheet" />
 
 <body>
 	{{>layout/navbar}}
@@ -14,31 +8,39 @@
 	<br>
 	<br>
 
-	<div class="w3-container w3-tangerine">
-		<p class="w3-jumbo" align="center">We can't wait to get married
-			and are so honored to have you at our wedding! If you would like to
-			help us start our new life together, we have registered for items we
-			would love to have in our home (or would graciously accept gift
-			cards).</p>
-	</div>
-
 	<div class="container">
 
-		<!-- First Photo Grid-->
-		<div class="w3-row-padding">
+		<div class="w3-row" id="registry_header">
+			<div class="w3-col m12 w3-padding-large">
+				<h1 class="w3-center">Registry</h1>
+				<br>
+				<p class="w3-large" align="center">If you are compelled by
+					extreme generosity, registries have been set up</p>
+			</div>
+			<div class="col-md-12" align="center">
+				<button type="button" id="ribbon-button" class="btn btn-default ribbon" disabled><p class="w3-large" align="center"><b>for your convenience below.</b></p></button>
+			</div>
+		</div>
+
+		<div class="w3-row-padding w3-padding-64">
 			<div class="w3-half w3-container w3-margin-bottom">
-				<img src="img/bed_bath_beyond.jpg" alt="BedBathBeyond" style="width: 100%">
+				<img src="img/bed_bath_beyond.jpg" alt="BedBathBeyond"
+					style="width: 100%">
 				<div class="w3-container w3-white">
 					<p align="center">
-						<a class="btn btn-primary" href="https://www.bedbathandbeyond.com/store/giftregistry/view_registry_guest.jsp?pwsToken=&eventType=Wedding&inventoryCallEnabled=true&registryId=544918714&pwsurl=">Shop Our Registry</a>
+						<a class="btn btn-primary"
+							href="https://www.bedbathandbeyond.com/store/giftregistry/view_registry_guest.jsp?pwsToken=&eventType=Wedding&inventoryCallEnabled=true&registryId=544918714&pwsurl=">Shop
+							Our Registry</a>
 					</p>
 				</div>
 			</div>
 			<div class="w3-half w3-container w3-margin-bottom">
-				<img src="img/amazon.jpg" alt="Norway" style="width: 100%">
+				<img src="img/amazon.jpg" alt="Amazon" style="width: 100%">
 				<div class="w3-container w3-white">
 					<p align="center">
-						<a class="btn btn-primary" href="https://www.amazon.com/wedding/organize-registry?ref_=cm_wl_search_25&_encoding=UTF8">Shop Our Registry</a>
+						<a class="btn btn-primary"
+							href="https://www.amazon.com/wedding/organize-registry?ref_=cm_wl_search_25&_encoding=UTF8">Shop
+							Our Registry</a>
 					</p>
 				</div>
 			</div>

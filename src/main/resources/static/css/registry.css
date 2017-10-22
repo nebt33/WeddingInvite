@@ -1,0 +1,79 @@
+@charset "ISO-8859-1";
+
+/*Remove that CSS*/
+#ribbon-button {
+	margin: 0px 0;
+	line-height: 34px;
+	position: relative;
+	user-select: none;
+	outline: none !important;
+	width: 100%;
+}
+
+#ribbon-button:hover{
+    text-decoration: none;
+    cursor: initial;
+    background-color: initial;
+}
+
+#ribbon-button.btn-default:disabled{
+    background-color: #292c2f;
+    color: #ffffff;
+    cursor: initial;
+}
+
+#ribbon-button.btn-default:disabled{
+    opacity: 1;
+    background-color: #292c2f;
+    color: #ffffff;
+    cursor: initial;
+}
+
+#ribbon-button.btn-default {
+	background-color: #292c2f;
+	color: #ffffff;
+}
+
+#ribbon-button:active {
+	outline: none;
+}
+
+#ribbon-button.ribbon {
+	outline: none;
+	outline-color: transparent;
+}
+
+#ribbon-button.ribbon:before, #ribbon-button.ribbon:after {
+	top: 10px;
+	z-index: -10;
+}
+
+#ribbon-button.ribbon:before {
+	border-color: #292c2f #292c2f #292c2f transparent;
+	left: -25px;
+	border-width: 17px;
+}
+
+#ribbon-button.ribbon:after {
+	border-color: #292c2f transparent #292c2f #292c2f;
+	right: -25px;
+	border-width: 17px;
+}
+
+#ribbon-button:before, #ribbon-button:after {
+	content: '';
+	position: absolute;
+	height: 0;
+	width: 0;
+	border-style: solid;
+	border-width: 0;
+	outline: none;
+}
+
+#ribbon-button.btn-default:before {
+	border-color: #292c2f #292c2f #292c2f transparent;
+}
+
+#ribbon-button.btn-default:after {
+	border-color: #292c2f transparent #292c2f #292c2f;
+}

@@ -4,9 +4,17 @@
 	{{>layout/navbar}}
 
 	<div class="container">
+		<div class="w3-row" id="song_request_header">
+			<div class="w3-col m12 w3-padding-large">
+				<h1 class="w3-center">Request a Song</h1>
+			</div>
+		</div>
+
 		<div class="pull-left">
-			<a class="songToolTip" data-toggle="tooltip" data-placement="bottom" title="Use this button to request a song to be played at our reception!">
-				<span class="glyphicon glyphicon-question-sign" style="color:orange" />
+			<a class="songToolTip" data-toggle="tooltip" data-placement="bottom"
+				title="Use this button to request a song to be played at our reception!">
+				<span class="glyphicon glyphicon-question-sign"
+				style="color: orange" ></span>
 			</a>
 			<button type="button" data-toggle="modal" class="btn btn-primary"
 				data-target="#addSongModal">Add Song</button>
@@ -28,7 +36,7 @@
 						<form class="form-like" action="/likeSong" method="post">
 							<td class="text-center vertical-align" name="title" id="title">{{title}}</td>
 							<td class="text-center vertical-align" name="artist" id="artist">{{artist}}</td>
-						 </form>
+						</form>
 					</tr>
 					{{/songTable}}
 				</tbody>
@@ -49,9 +57,10 @@
 									<div class="tab-content">
 										<form class="form-signin" action="/addSongPost" method="post">
 											<input type="text" name="title" id="inputTitle"
-												class="form-control" placeholder="Title" maxlength="300" required><br>
-											<input type="text" name="artist" id="inputArtist"
-												class="form-control" placeholder="Artist" maxlength="300" required><br>
+												class="form-control" placeholder="Title" maxlength="300"
+												required><br> <input type="text" name="artist"
+												id="inputArtist" class="form-control" placeholder="Artist"
+												maxlength="300" required><br>
 											<button class="btn btn-lg btn-primary btn-block btn-signin"
 												type="submit">Submit Song</button>
 										</form>
