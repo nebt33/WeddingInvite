@@ -20,7 +20,7 @@ public interface SongService {
  
 //    void deleteAllSongs();
  
-    List<Song> findAllSongs();
+    Iterable<Song> findAllSongs();
  
     boolean isSongExist(Song song);
 }

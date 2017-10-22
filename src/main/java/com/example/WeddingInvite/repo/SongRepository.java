@@ -15,7 +15,7 @@ import com.example.WeddingInvite.model.Song;
 //	
 //}
 @Transactional
-public interface SongRepository extends JpaRepository<Song, Integer>{
+public interface SongRepository extends PagingAndSortingRepository<Song, Integer>{
 	
 	Song findByTitle(String title);
 //	Page<Song> findByTitle(Pageable pageable, String title);

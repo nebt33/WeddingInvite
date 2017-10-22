@@ -21,6 +21,11 @@ $(document).ready(function() {
         $('.counter').text(jobCount + ' item');
 
       if(jobCount == '0') {$('.no-result').show();}
-        else {$('.no-result').hide();}
-    });
+        else {$('.no-result').hide();}    
+    });   
 } );
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+

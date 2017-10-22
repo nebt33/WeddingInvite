@@ -40,7 +40,7 @@ public class SongServiceImpl implements SongService {
 //        songRepository.deleteAll();
 //    }
  
-    public List<Song> findAllSongs(){
+    public Iterable<Song> findAllSongs(){
         return songRepository.findAll();
     }
  
