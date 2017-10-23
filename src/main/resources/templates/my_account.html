@@ -1,0 +1,66 @@
+{{>layout/header}}
+<link href="/css/my_account.css" rel="stylesheet" />
+<body>
+	{{>layout/navbar}}
+	<div class="container">
+		<div class="row profile">
+			<div class="col-md-3">
+				<div class="profile-sidebar">
+					<!-- SIDEBAR USER TITLE -->
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">{{appUserName}}</div>
+						<div class="profile-usertitle-job">{{appUserRole}}</div>
+					</div>
+					<!-- END SIDEBAR USER TITLE -->
+
+					<!-- SIDEBAR MENU -->
+					<div class="profile-usermenu">
+						<ul class="nav">
+							<li class="active"><a href="#"> <i
+									class="glyphicon glyphicon-user"></i> Change Password
+							</a></li>
+							<li><a href="#"> <i class="glyphicon glyphicon-envelope"></i>
+									Change Email
+							</a></li>
+							<li><a href="#" target="_blank"> <i
+									class="glyphicon glyphicon-home"></i> Change Address
+							</a></li>
+							<li><a href="#"> <i class="glyphicon glyphicon-bell"></i>
+									Sign Up for Email Reminders
+							</a></li>
+						</ul>
+					</div>
+					<!-- END MENU -->
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="profile-content" id="change_password_parent">
+					<div class="card card-container" id="change_password_child">
+
+						<form class="form-signin" id="form-signin" action="/login" method="post">
+							<span id="reauth-email" class="reauth-email"></span> 
+							Current Password : <input type="text" name="user_name" id="inputUserName"
+								class="form-control" placeholder="User Name" required autofocus>
+							New Password : <input type="password" name="password" id="inputPassword"
+								class="form-control" placeholder="Password" required>
+							Confirm New Password : <input type="password" name="password" id="inputPassword"
+								class="form-control" placeholder="Password" required>
+							<br>	<br>
+							<button class="btn btn-lg btn-primary btn-block btn-signin"
+								type="submit">Sumbit</button>
+						</form>
+						<!-- /form -->
+					</div>
+					<!-- /card-container -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+	<script src="/webjars/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/js/navbar.js"></script>
+	
+</body>
+{{>layout/footer}}

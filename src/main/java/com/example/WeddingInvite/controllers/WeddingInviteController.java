@@ -75,20 +75,6 @@ public class WeddingInviteController {
 		return "reception";
 	}
 	
-	@GetMapping(value="/the_cast")
-	public String the_cast(Map<String, Object> model) {
-		model.put("title", TITLE);
-		model.put("message", MESSAGE);
-		return "the_cast";
-	}
-	
-	@GetMapping(value="/registry")
-	public String registry(Map<String, Object> model) {
-		model.put("title", TITLE);
-		model.put("message", MESSAGE);
-		return "registry";
-	}
-	
 	@PostMapping(value = "/addSongPost")
 	public String addSongPost(@ModelAttribute Song song, Map<String, Object> model) {
 		model.put("title", TITLE);
@@ -111,46 +97,42 @@ public class WeddingInviteController {
 	public String requestSong(Map<String, Object> model) {
 		model.put("title", TITLE);
 		model.put("message", MESSAGE);
-		
-		//used to calculate popularity
-//		int numOfUsers = appUserRepository.findAll().size();
-		
+
 		Pageable pageable = new PageRequest(0,1000,
 				Direction.ASC, "title", "artist");
 
 		Page<Song> songTable = songRepoistory.findAll(pageable);
 		
-		//terrible code to populate a heart for each list spot for mustache
-//		for (Song s: songTable) {
-//			s.setNumOfHearts(new ArrayList<String>());
-//			s.getNumOfHearts().add("heart");
-//			for (int i = 0; i < s.getPopularity()/numOfUsers; i++) {
-//				if (!(i > 4)) {
-//					s.getNumOfHearts().add("heart");
-//				} else {
-//					break;
-//				}
-//			}
-//		}
 		model.put("songTable", songTable);
 		return "requestSong";
 	}
 	
-//	@PostMapping(value = "/likeSong")
-//	public String likeSong(@RequestParam("title")  String title,
-//			               @RequestParam("artist") String artist, 
-//			               Map<String, Object> model) {
-//		model.put("title", TITLE);
-//		model.put("message", MESSAGE);
-//		//songRepoistory.save(song);
-//		return "requestSong";
-//	}
+	@GetMapping(value="/registry")
+	public String registry(Map<String, Object> model) {
+		model.put("title", TITLE);
+		model.put("message", MESSAGE);
+		return "registry";
+	}
 	
-//	@GetMapping(value = "/accessDenied")
-//	public String accessDeniedPage(Map<String, Object> model) {
-//		model.put("title", TITLE);
-//		model.put("message", MESSAGE);
-//		return "accessDenied";
-//	}
+	@GetMapping(value="/the_cast")
+	public String the_cast(Map<String, Object> model) {
+		model.put("title", TITLE);
+		model.put("message", MESSAGE);
+		return "the_cast";
+	}
+	
+	@GetMapping(value="/my_account")
+	public String my_account(Map<String, Object> model) {
+		model.put("title", TITLE);
+		model.put("message", MESSAGE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		
+		return "my_account";
+	}
 
 }

@@ -29,5 +29,8 @@ public class AppUser {
 	
 	@Column(name="last_login_date")
 	private Date lastLoginDate;
+	
+	@Column
+	private String role;
 
 }
