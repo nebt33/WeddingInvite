@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,7 +51,6 @@ public class WeddingInviteController {
 	@GetMapping(value={"/login", "/"})
 	public String login(Map<String, Object> model, @RequestParam(value = "error", required = false) String error) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 		
 		if (error != null && error.equalsIgnoreCase("badCred")) {
 	        model.put("badCred", "Invalid username and/or password!");
@@ -64,21 +64,18 @@ public class WeddingInviteController {
 	@GetMapping(value="/ceremony")
 	public String ceremony(Map<String, Object> model) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 		return "ceremony";
 	}
 	
 	@GetMapping(value="/reception")
 	public String reception(Map<String, Object> model) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 		return "reception";
 	}
 	
 	@PostMapping(value = "/addSongPost")
 	public String addSongPost(@ModelAttribute Song song, Map<String, Object> model) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		song.setSubmittedBy(auth.getName());
@@ -96,7 +93,6 @@ public class WeddingInviteController {
 	@GetMapping(value = "/requestSong")
 	public String requestSong(Map<String, Object> model) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 
 		Pageable pageable = new PageRequest(0,1000,
 				Direction.ASC, "title", "artist");
@@ -110,7 +106,6 @@ public class WeddingInviteController {
 	@GetMapping(value="/registry")
 	public String registry(Map<String, Object> model) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 		return "registry";
 	}
 	
@@ -124,7 +119,6 @@ public class WeddingInviteController {
 	@GetMapping(value="/my_account")
 	public String my_account(Map<String, Object> model) {
 		model.put("title", TITLE);
-		model.put("message", MESSAGE);
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		AppUser appUser = appUserRepository.findOne(auth.getName());
@@ -133,6 +127,137 @@ public class WeddingInviteController {
 		model.put("appUserRole", appUser.getRole());
 		
 		return "my_account";
+	}
+	
+	@GetMapping(value="/my_account_change_password")
+	public String my_account_change_password(Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		
+		return "my_account_change_password";
+	}
+	
+	@PostMapping(value="/my_account_change_password")
+	public String my_account_change_password(@RequestParam(value = "newPassword", required = false) String newPassword, Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		
+		String salt = BCrypt.gensalt(12);
+		String hashed_password = BCrypt.hashpw(newPassword, salt);
+		
+		appUser.setPassword(hashed_password);
+		appUserRepository.save(appUser);
+		
+		return "my_account_change_password";
+	}
+	
+	@GetMapping(value="/my_account_change_email")
+	public String my_account_change_email(Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		model.put("appUserEmail", appUser.getEmail());
+		
+		return "my_account_change_email";
+	}
+	
+	@PostMapping(value="/my_account_change_email")
+	public String my_account_change_email(@RequestParam(value = "newEmail", required = false) String newEmail, Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		
+		appUser.setEmail(newEmail);
+		appUserRepository.save(appUser);
+		
+		model.put("appUserEmail", appUser.getEmail());
+		
+		return "my_account_change_email";
+	}
+	
+	@GetMapping(value="/my_account_change_address")
+	public String my_account_change_address(Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		model.put("appUserAddress", appUser.getAddress());
+		
+		return "my_account_change_address";
+	}
+	
+	@PostMapping(value="/my_account_change_address")
+	public String my_account_change_address(@RequestParam(value = "newAddress", required = false) String newAddress, Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		
+		appUser.setAddress(newAddress);
+		appUserRepository.save(appUser);
+		
+		model.put("appUserAddress", appUser.getAddress());
+		
+		return "my_account_change_address";
+	}
+	
+	@GetMapping(value="/my_account_email_reminders")
+	public String my_account_email_reminders(Map<String, Object> model) {
+		model.put("title", TITLE);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		model.put("appUserEmailReminder", appUser.getEmailReminder());
+		
+		return "my_account_email_reminders";
+	}
+	
+	@PostMapping(value="/my_account_email_reminders")
+	public String my_account_email_reminders(@RequestParam(value = "checkboxID", required = false) String checkboxID, Map<String, Object> model) {
+		model.put("title", TITLE);
+			
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		AppUser appUser = appUserRepository.findOne(auth.getName());
+		
+		model.put("appUserName", appUser.getUserName());
+		model.put("appUserRole", appUser.getRole());
+		
+		if (checkboxID == null)
+			appUser.setEmailReminder(false);
+		else
+			appUser.setEmailReminder(true);
+		appUserRepository.save(appUser);
+		
+		model.put("appUserEmailReminder", appUser.getEmailReminder());
+		
+		return "my_account_email_reminders";
 	}
 
 }

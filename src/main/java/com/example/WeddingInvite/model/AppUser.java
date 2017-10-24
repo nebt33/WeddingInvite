@@ -32,5 +32,13 @@ public class AppUser {
 	
 	@Column
 	private String role;
-
+	
+	@Column
+	private String email;
+	
+	@Column
+	private String address;
+	
+	@Column(name="email_reminder")
+	private Boolean emailReminder;
 }

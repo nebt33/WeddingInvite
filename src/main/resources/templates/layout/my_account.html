@@ -1,0 +1,42 @@
+{{>layout/header}}
+{{>layout/navbar}}
+<link href="/css/my_account.css" rel="stylesheet" />
+<body>
+	<div class="container">
+		<div class="row profile">
+			<div class="col-md-3">
+				<div class="profile-sidebar">
+					<!-- SIDEBAR USER TITLE -->
+					<div class="profile-usertitle">
+						<div class="profile-usertitle-name">{{appUserName}}</div>
+						<div class="profile-usertitle-job">{{appUserRole}}</div>
+					</div>
+					<!-- END SIDEBAR USER TITLE -->
+
+					<!-- SIDEBAR MENU -->
+					<div class="profile-usermenu">
+						<ul class="nav">
+							<li><a href="/my_account_change_password.html"> <i
+									class="glyphicon glyphicon-user"></i> Change Password
+							</a></li>
+							<li><a href="/my_account_change_email.html"> <i class="glyphicon glyphicon-envelope"></i>
+									Change Email
+							</a></li>
+							<li><a href="/my_account_change_address.html"> <i
+									class="glyphicon glyphicon-home"></i> Change Address
+							</a></li>
+							<li><a href="/my_account_email_reminders.html"> <i class="glyphicon glyphicon-bell"></i>
+									Sign Up for Email Reminders
+							</a></li>
+						</ul>
+					</div>
+					<!-- END MENU -->
+				</div>
+			</div>
+<!-- 		</div> -->
+<!-- 	</div> -->
+	
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+	<script src="/webjars/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/js/navbar.js"></script>
