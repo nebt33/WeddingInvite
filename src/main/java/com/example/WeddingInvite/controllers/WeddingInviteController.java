@@ -61,6 +61,12 @@ public class WeddingInviteController {
 		return "login";
 	}
 	
+	@GetMapping(value="/about_us")
+	public String about_us(Map<String, Object> model) {
+		model.put("title", TITLE);
+		return "about_us";
+	}
+	
 	@GetMapping(value="/ceremony")
 	public String ceremony(Map<String, Object> model) {
 		model.put("title", TITLE);

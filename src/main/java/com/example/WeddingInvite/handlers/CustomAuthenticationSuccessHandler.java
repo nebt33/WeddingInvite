@@ -32,7 +32,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
 		resetUser(request.getParameter("user_name"));
 		
-		response.sendRedirect("ceremony");
+		response.sendRedirect("about_us");
 		
 	}
 	
