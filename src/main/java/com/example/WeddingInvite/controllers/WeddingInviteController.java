@@ -1,6 +1,7 @@
 package com.example.WeddingInvite.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +86,7 @@ public class WeddingInviteController {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		song.setSubmittedBy(auth.getName());
-	      
+	    song.setSubmittedByDate(new Date());  
 		songRepoistory.save(song);
 		
 		Pageable pageable = new PageRequest(0,1000,
